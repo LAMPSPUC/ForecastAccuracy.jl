@@ -158,7 +158,7 @@ end
 """
     maape(real::Vector{T}, forecast::Vector{T}) where T
 
-Mean Arctangent Absolute Percentage Error. 
+Mean Arctangent Absolute Percentage Error. As developed in https://www.sciencedirect.com/science/article/pii/S0169207016000121
 """
 function maape(real::Vector{T}, forecast::Vector{T}) where T
     return mean(atan.(abs_percent_err(real, forecast)))
@@ -167,7 +167,7 @@ end
 """
     mase(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where T
 
-Mean Absolute Scaled Error. 
+Mean Absolute Scaled Error. As developed in https://robjhyndman.com/papers/mase.pdf
 """
 function mase(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where T
     return mean(abs.(scaled_err(real, forecast, steps_ahead)))
@@ -176,7 +176,7 @@ end
 """
     mdase(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where T
 
-Median Absolute Scaled Error. 
+Median Absolute Scaled Error. As developed in https://robjhyndman.com/papers/mase.pdf
 """
 function mdase(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where T 
     return median(abs.(scaled_err(real, forecast, steps_ahead)))
