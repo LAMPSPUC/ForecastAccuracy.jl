@@ -20,6 +20,17 @@ function scaled_err(real::Vector{T}, forecast::Vector{T}, steps_ahead::Int) wher
     return err(real, forecast)/denom
 end
 
+function scaled_sq_err(real::Vector{T}, forecast::Vector{T}, steps_ahead::Int) where T 
+    denom = zero(T)
+    n = length(real)
+    for i in 1 + steps_ahead : n
+        @inbounds denom += (real[i] - real[i - 1])^2
+    end
+    denom = denom/(n - steps_ahead)
+    return mean(sq_err(real, forecast))/denom
+end
+
+
 function geomean(v::Vector{T}) where T
     s = zero(T)
     n = length(v)
@@ -182,6 +193,15 @@ function mdase(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where
     return median(abs.(scaled_err(real, forecast, steps_ahead)))
 end
 
+"""
+    rmsse(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where T
+
+Root Mean Squared Scaled Error. 
+"""
+function rmsse(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where T
+    return sqrt(scaled_sq_err(real, forecast, steps_ahead))
+end
+
 const METRICS = [
     me,
     mde,
@@ -199,7 +219,8 @@ const METRICS = [
     smdape,
     maape,
     mase,
-    mdase
+    mdase,
+    rmsse
 ]
 
 # ForecastAccuracy exports all of the metrics in METRICS. 
