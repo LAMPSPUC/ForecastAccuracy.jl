@@ -202,6 +202,24 @@ function rmsse(real::Vector{T}, forecast::Vector{T}; steps_ahead::Int = 1) where
     return sqrt(scaled_sq_err(real, forecast, steps_ahead))
 end
 
+"""
+    pl(real::Vector{T}, quantile_forecast::Vector{T}, tau::T) where T
+
+Pinball loss function defined in terms of the quantile ``\\tau``
+"""
+function pl(real::Vector{T}, quantile_forecast::Vector{T}; tau::T = 0.5) where T
+    @assert ((tau <= 1) && (tau >= 0)) ""
+    pinball_loss = zero(T)
+    for i in 1:length(real)
+        if real[i] >= quantile_forecast[i]
+            pinball_loss += tau * (real[i] - quantile_forecast[i])
+        else
+            pinball_loss += (1 - tau) * (quantile_forecast[i] - real[i])
+        end
+    end
+    return pinball_loss
+end
+
 const METRICS = [
     me,
     mde,
@@ -220,7 +238,8 @@ const METRICS = [
     maape,
     mase,
     mdase,
-    rmsse
+    rmsse,
+    pl
 ]
 
 # ForecastAccuracy exports all of the metrics in METRICS. 

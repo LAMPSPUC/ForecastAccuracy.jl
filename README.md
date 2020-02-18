@@ -10,4 +10,26 @@
 [codecov-img]: https://codecov.io/gh/LAMPSPUC/ForecastAccuracy.jl/coverage.svg?branch=master
 [codecov-url]: https://codecov.io/gh/LAMPSPUC/ForecastAccuracy.jl?branch=master
 
-Implementation of forecast accuracy measures, examples are MAE, MAPE and MASE. For more information please read the documentation.
+Implementation of forecast accuracy measures
+
+*   ME
+*   MdE
+*   MAE 
+*   GMAE
+*   MdAE
+*   MSE 
+*   MdSE
+*   RMSE 
+*   MPE
+*   MdPE
+*   MAPE
+*   MdAPE
+*   SMAPE
+*   SMdAPE
+*   MAAPE
+*   MASE
+*   MdASE
+*   RMSSE
+*   Pinball Loss
+
+For more information please read the documentation.
