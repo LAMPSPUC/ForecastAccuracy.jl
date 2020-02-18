@@ -15,6 +15,8 @@ Contributions to this package are more than welcome, if you find a bug or have a
 
 When contributing please note that the package follows the [JuMP style guide](https://www.juliaopt.org/JuMP.jl/stable/style/).
 
+## Accuracy measures
+
 ```@docs
 me
 mde
@@ -32,7 +34,6 @@ smape
 smdape
 maape
 mase
-mdase
 mdase
 rmsse
 pl
