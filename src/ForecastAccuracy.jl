@@ -2,7 +2,8 @@ module ForecastAccuracy
 
 using Statistics
 
-# Exports are in the end of the file
+export me, mde, mae, gmae, mdae, mse, mdse, rmse, mpe, mdpe, mape, mdape, smape,
+    smdape, maape, mase, mdase, rmsse, pl
 
 err(real::Vector{T}, forecast::Vector{T}) where T = real .- forecast
 abs_err(real::Vector{T}, forecast::Vector{T}) where T = abs.(err(real, forecast))
@@ -205,7 +206,7 @@ end
 """
     pl(real::Vector{T}, quantile_forecast::Vector{T}, tau::T) where T
 
-Pinball loss function defined in terms of the quantile ``\\tau``
+Pinball loss function defined in terms of the quantile `tau`
 """
 function pl(real::Vector{T}, quantile_forecast::Vector{T}; tau::T = 0.5) where T
     @assert ((tau <= 1) && (tau >= 0)) ""
@@ -241,10 +242,5 @@ const METRICS = [
     rmsse,
     pl
 ]
-
-# ForecastAccuracy exports all of the metrics in METRICS. 
-for metric in METRICS
-    @eval export metric
-end
 
 end # module
