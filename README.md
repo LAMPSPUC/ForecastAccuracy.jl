@@ -2,7 +2,7 @@
 
 | **Build Status** | **Coverage** | **Documentation** |
 |:-----------------:|:-----------------:|:-----------------:|
-| [![Build Status][build-img]][build-url] | [![Codecov branch][codecov-img]][codecov-url] |[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://lampspuc.github.io/ForecastAccuracy.jl/latest/)
+| [![Build Status][build-img]][build-url] | [![Codecov branch][codecov-img]][codecov-url] |[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://lampspuc.github.io/ForecastAccuracy.jl/dev/)
 
 [build-img]: https://travis-ci.com/LAMPSPUC/ForecastAccuracy.jl.svg?branch=master
 [build-url]: https://travis-ci.com/LAMPSPUC/ForecastAccuracy.jl
